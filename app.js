@@ -4,7 +4,8 @@ const app = exp();
 app.use(exp.static("assets"));
 app.set("view engine", "ejs");
 
-// Load an example of Pug (Jade)
+// Load an example of Pug (Jade.) By providing the file extension,
+// we can have it use the pug view engine instead of EJS.
 app.get("/pug", function(req, res) {
 	res.render("pug-example.pug", {
 		isPug: true,
@@ -12,7 +13,8 @@ app.get("/pug", function(req, res) {
 	});
 });
 
-// Load an example of EJS
+// Load an example of EJS. No need for the file extension, because
+// we set the view engine to "ejs".
 app.get("/ejs", function(req, res) {
 	res.render("ejs-example.ejs", {
 		isEjs: true,
