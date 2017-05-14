@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Page Title</title>
+	</head>
+	<body>
+		<h1>EJS - node template engine</h1>
+		<div>
+			<p>
+				<% if (isEjs) { %>
+					You are amazing
+				<% } else { %>
+					Get on it!
+				<% } %>
+			</p>
+			<p>
+				EJS is a simple templating language that lets you generate HTML markup
+				with plain JavaScript. No religiousness about how to organize things.
+				No reinvention of iteration and control-flow. It's just plain JavaScript.
+			</p>
+			<ul>
+				<% for (let i = 0; i < list.length; i++) { %>
+					<li><%= list[i] %></li>
+				<% } %>
+			</ul>
+</html>

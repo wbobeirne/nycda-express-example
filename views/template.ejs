@@ -1,0 +1,20 @@
+<html>
+	<head>
+		<title>Will's Cool Site - <%= title %></title>
+		<link rel="stylesheet" type="text/css" href="/css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/style.css"/>
+	</head>
+	<body>
+		<div class="template">
+			<a href="/" class="template-header">
+				<h1>Will's Cool Site</h1>
+			</a>
+
+			<main class="template-main">
+				<%- include("pages/" + page, pageArgs); %>
+			</main>
+
+			<footer class="template-footer">© Will O'Beirne 2017</footer>
+		</div>
+	</body>
+</html>
