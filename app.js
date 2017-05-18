@@ -1,58 +1,16 @@
 const exp = require("express");
 const app = exp();
 
+const countriesRouter = require("./routers/countries");
+const examplesRouter = require("./routers/examples");
+const portfolioRouter = require("./routers/portfolio");
+
 app.use(exp.static("assets"));
 app.set("view engine", "ejs");
 
-// Load an example of Pug (Jade.) By providing the file extension,
-// we can have it use the pug view engine instead of EJS.
-app.get("/pug", function(req, res) {
-	res.render("pug-example.pug", {
-		isPug: true,
-		list: ["list", "of", "things"],
-	});
-});
-
-// Load an example of EJS. No need for the file extension, because
-// we set the view engine to "ejs".
-app.get("/ejs", function(req, res) {
-	res.render("ejs-example.ejs", {
-		isEjs: true,
-		list: ["list", "of", "things"],
-	});
-});
-
-// Using the template, render some pages
-function renderTemplate(res, page, title, pageArgs) {
-	return res.render("template", {
-		page: page,
-		title: title,
-		pageArgs: pageArgs,
-	});
-}
-
-app.get("/", function(req, res) {
-	renderTemplate(res, "home", "Homepage", {
-		links: [{
-			text: "Pug Example",
-			href: "/pug",
-		}, {
-			text: "EJS Example",
-			href: "/ejs",
-		}, {
-			text: "About",
-			href: "/about",
-		}],
-	});
-});
-
-app.get("/about", function(req, res) {
-	renderTemplate(res, "about", "About", {
-		picture: "/images/will.jpeg",
-		twitter: "wbobeirne",
-		github: "wbobeirne",
-	});
-});
+app.use("/", portfolioRouter);
+app.use("/examples", examplesRouter);
+app.use("/countries", countriesRouter);
 
 app.listen(3000, function() {
 	console.log("Listening!");
